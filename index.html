@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">  
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale= 1.0">
+        <link rel = "stylesheet" href="./style.css">
+        <title>WebAR-PIC</title>
+        <script src="./src/aframe-v1.3.0.js"></script>
+        <script src="./loaders/model-viewer.js"></script>
+        <script src = "./loaders/ar-shadows.js"></script>
+        <script src="./loaders/background-gradient.js"></script>
+    </head>
+    <body>
+        <a-scene
+        renderer="colorManagement: true;"
+        model-viewer = "gltfModel: #glbasset; title: glbasset">
+            <a-assets>
+                <a-asset-item id ="glbasset" src ="Assets/EP3246_70_GLB_USDZ/EP3246_NT.glb"></a-asset-item>
+            </a-assets>
+        </a-scene>
+    </body>
+</html>
