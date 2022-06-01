@@ -6,11 +6,10 @@ AFRAME.registerComponent('model-viewer', {
     uploadUIEnabled: {default: true}
   },
   init: function () {
-    var el = this.el;
-
+    var el = this.el
     el.setAttribute('renderer', {colorManagement: true});
     el.setAttribute('cursor', {rayOrigin: 'mouse', fuse: false});
-    el.setAttribute('webxr', {optionalFeatures: 'hit-test, local-floor, light-estimation, anchors'});
+    el.setAttribute('webxr', {optionalFeatures: 'hit-test,local,light-estimation'});
     el.setAttribute('raycaster', {objects: '.raycastable'});
     el.setAttribute('background', '');
 
@@ -471,7 +470,7 @@ AFRAME.registerComponent('model-viewer', {
   },
 
   onModelLoaded: function () {
-    this.centerAndScaleModel();
+    //this.centerAndScaleModel();
   },
 
   centerAndScaleModel: function () {
@@ -485,9 +484,9 @@ AFRAME.registerComponent('model-viewer', {
     var gltfObject = modelEl.getObject3D('mesh');
 
     // Reset position and scales.
-    modelEl.object3D.position.set(0, 0, 0);
-    modelEl.object3D.scale.set(1.0, 1.0, 1.0);
-    this.cameraRigEl.object3D.position.z = 3.0;
+    //modelEl.object3D.position.set(0, 0, 0);
+   // modelEl.object3D.scale.set(1.0, 1.0, 1.0);
+   // this.cameraRigEl.object3D.position.z = 3.0;
 
     // Calculate model size.
     modelEl.object3D.updateMatrixWorld();
