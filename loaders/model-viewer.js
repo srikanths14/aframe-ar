@@ -226,10 +226,11 @@ AFRAME.registerComponent('model-viewer', {
 
     this.containerEl.appendChild(laserHitPanelEl);
 
-    modelEl.setAttribute('rotation', '0 -30 0');
+    modelEl.setAttribute('rotation', '0 0 0');
     modelEl.setAttribute('animation-mixer', '');
     modelEl.setAttribute('shadow', 'cast: true; receive: false');
     modelEl.setAttribute('id', 'modelEl');
+    modelEl.setAttribute('animation','property: rotation; to: 0 360 0; loop: true; dur: 10000 easing: easeInSine')
 
     modelPivotEl.appendChild(modelEl);
 
