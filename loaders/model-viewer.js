@@ -3,7 +3,7 @@ AFRAME.registerComponent('model-viewer', {
   schema: {
     gltfModel: {default: ''},
     title: {default: ''},
-    uploadUIEnabled: {default: true}
+    uploadUIEnabled: {default: false}
   },
   init: function () {
     var el = this.el;
