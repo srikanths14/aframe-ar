@@ -10,7 +10,7 @@ AFRAME.registerComponent('model-viewer', {
 
     el.setAttribute('renderer', {colorManagement: true});
     el.setAttribute('cursor', {rayOrigin: 'mouse', fuse: false});
-    el.setAttribute('webxr', {optionalFeatures: 'hit-test,local,light-estimation'});
+    el.setAttribute('webxr', {optionalFeatures: 'hit-test,local-floor,light-estimation'});
     el.setAttribute('raycaster', {objects: '.raycastable'});
     el.setAttribute('background', '');
 
@@ -361,7 +361,7 @@ AFRAME.registerComponent('model-viewer', {
     this.cameraRigRotation = cameraRigEl.object3D.rotation.clone();
 
     if (!this.el.sceneEl.is('ar-mode')) {
-    //  cameraRigEl.object3D.position.set(0, 0, 2);
+     cameraRigEl.object3D.position.set(0, 0, 2);
     } else {
       cameraRigEl.object3D.position.set(0, 0, 0);
     }
