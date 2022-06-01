@@ -495,14 +495,14 @@ AFRAME.registerComponent('model-viewer', {
     size = box.getSize(new THREE.Vector3());
 
     // Calculate scale factor to resize model to human scale.
-    scale = 1.6 / size.y;
-    scale = 2.0 / size.x < scale ? 2.0 / size.x : scale;
-    scale = 2.0 / size.z < scale ? 2.0 / size.z : scale;
+   // scale = 1.6 / size.y;
+    //scale = 2.0 / size.x < scale ? 2.0 / size.x : scale;
+   // scale = 2.0 / size.z < scale ? 2.0 / size.z : scale;
 
-    modelEl.object3D.scale.set(scale, scale, scale);
+    //modelEl.object3D.scale.set(scale, scale, scale);
 
     // Center model at (0, 0, 0).
-    modelEl.object3D.updateMatrixWorld();
+   // modelEl.object3D.updateMatrixWorld();
     box = new THREE.Box3().setFromObject(gltfObject);
     center = box.getCenter(new THREE.Vector3());
     size = box.getSize(new THREE.Vector3());
