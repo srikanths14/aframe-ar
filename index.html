@@ -9,13 +9,50 @@
         <script src="./loaders/model-viewer.js"></script>
         <script src = "./loaders/ar-shadows.js"></script>
         <script src="./loaders/background-gradient.js"></script>
+        <style>
+              #overlay {
+          display: none;
+      }
+      /* Show the DOM Overlay element while active (:xr-overlay pseudoclass) */
+      #overlay:xr-overlay {
+          display: initial;
+      }
+          #exit-ar {
+          position: absolute;
+          right: 40px;
+          bottom: 40px;
+          background: rgba(127,127,127,0.25);
+          color: white;
+          border: 1px solid rgba(255,255,255,0.25);
+          padding: 6px 8px;
+          font-weight: bold;
+      }
+        </style>
+        <script>
+        AFRAME.registerComponent('exit-ar-button', {
+            schema: {
+            element: {type: 'selector'}
+        },
+        init: function () {
+          this.data.element.addEventListener('click', ev => {
+              this.el.sceneEl.renderer.xr.getSession().end();
+          });
+        }
+      });
+        </script>
+   
     </head>
     <body>
-        <a-scene
+        <div id="overlay">
+            <button id="exit-ar">Exit AR</button>
+        </div>
+        <a-scene  
+        webxr="optionalFeatures: dom-overlay; overlayElement: #overlay"
         renderer="colorManagement: true;"
         model-viewer = "gltfModel: #glbasset; title: glbasset">
+        <a-entity exit-ar-button="element: #exit-ar"></a-entity>
             <a-assets>
-                <a-asset-item id ="glbasset" src ="Assets/EP3246_70_GLB_USDZ/EP3246_NT.glb"></a-asset-item>
+                    <a-asset-item id ="glbasset" src ="Assets/EP3246_70_GLB_USDZ/EP3246_NT.glb"></a-asset-item>
             </a-assets>
         </a-scene>
     </body>

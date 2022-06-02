@@ -10,7 +10,7 @@ AFRAME.registerComponent('model-viewer', {
 
     el.setAttribute('renderer', {colorManagement: true});
     el.setAttribute('cursor', {rayOrigin: 'mouse', fuse: false});
-    el.setAttribute('webxr', {optionalFeatures: 'hit-test, local-floor, light-estimation, anchors'});
+    el.setAttribute('webxr', {optionalFeatures: 'hit-test,dom-overlay,overlayElement: document.body,local-floor,light-estimation, anchors'});
     el.setAttribute('raycaster', {objects: '.raycastable'});
     el.setAttribute('background', '');
 
@@ -173,6 +173,29 @@ AFRAME.registerComponent('model-viewer', {
     cameraRigEl.appendChild(leftHandEl);
 
     this.el.appendChild(cameraRigEl);
+  },
+
+  initCanvas: function(){
+
+    this.canvasContainer = document.createElement('div');
+    this.canvasContainer.id = 'ui-canvas';
+
+    this.el.sceneEl.appendChild(this.canvasContainer);
+
+    this.playAnimationButton = document.createElement('button');
+    this.playAnimationButton.id = 'button-playAnimation';
+    this.playAnimationButton.style.display ='';
+    this.playAnimationButton.textContent = 'Play Animation';
+    this.playAnimationButton.style.position = 'absolute';
+    this.playAnimationButton.style.right = '10px';
+    this.playAnimationButton.style.top = '195px';
+    this.playAnimationButton.style.width = '70px';
+    this.playAnimationButton.style.height = '50px';
+    this.playAnimationButton.style.fontSize = '10px';
+    this.playAnimationButton.addEventListener('click',playRotationAnimation);
+
+    this.canvasContainer.appendChild(this.playAnimationButton);
+
   },
 
   initBackground: function () {
